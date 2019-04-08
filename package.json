@@ -2,6 +2,7 @@
   "name": "emoji-surveys",
   "version": "0.1.0",
   "private": true,
+  "main": "server",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
