@@ -1,13 +1,15 @@
 .App {
-  text-align: center;
+    text-align: center;
+    background-color: #1a1a1a;
 }
 
 main {
-  background-color: #ececec;
-  min-height: 100vh; /* calc(100vh - 100px) ?? */
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
+    background-color: #1a1a1a;
+    min-height: calc(100vh - 100px);
+    width: 100vw;
+    min-width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
 }

@@ -1,33 +1,49 @@
 import React from "react";
+import { StyledRow } from "../Survey/Survey";
 import styled from "styled-components";
-const Question = props => {
-  return (
-    <StyledRow>
-      <div />
-      <div />
-      <div />
-      <div />
-      <button>Feedback</button>
-    </StyledRow>
-  );
+
+function Question(props) {
+    function generate(questionNum) {
+        return (
+            <StyledEmojiSelect onChange={e => setValue(questionNum, e.target.value)}>
+                <option value={1}>{"😄"}</option>
+                <option value={0}>{"😐"}</option>
+                <option value={-1}>{"🙁"}</option>
+            </StyledEmojiSelect>
+        );
+    }
+    function setValue(questionNum, val) {
+      // const { happiness } = props;
+      props.setQuestion()
+    }
+
+    return (
+        <StyledRow className="question">
+            <div>
+                <h2>{props.topic}</h2>
+            </div>
+            <div>{generate()}</div>
+            <div>{generate()}</div>
+            <div>{generate()}</div>
+            <div>
+                <StyledDevMountainButton>Feedback</StyledDevMountainButton>
+            </div>
+        </StyledRow>
+    );
 };
 
 export default Question;
 
-const StyledRow = styled.div`
-  width: 100%;
-  height: 100%;
-  border: 1px solid red;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  & > div {
-    height: 100%;
-    width: 25%;
-    border: 1px solid purple;
-  }
-  & button {
+const StyledDevMountainButton = styled.button`
     background-color: #23acd6;
-    font-size: 24px;
-  }
+    font-size: 1.5rem;
+    border: none;
+    color: white;
+`;
+
+const StyledEmojiSelect = styled.select`
+    height: 90%;
+    width: 90%;
+    font-size: 3rem;
+    text-align-last: center;
 `;
