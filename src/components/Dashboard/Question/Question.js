@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyledRow } from "../Survey/Survey";
 import styled from "styled-components";
+import Axios from "axios";
 
 function Question(props) {
+    // const [q1, setQ1] = useState();
+    // const [q2, setQ2] = useState();
+    // const [q3, setQ3] = useState();
+    // const [feedback, setFeedback] = useState("");
+
+    useEffect(() => {});
     function generate(questionNum) {
         return (
-            <StyledEmojiSelect onChange={e => setValue(questionNum, e.target.value)}>
-                <option value={1}>{"😄"}</option>
-                <option value={0}>{"😐"}</option>
-                <option value={-1}>{"🙁"}</option>
+            <StyledEmojiSelect
+                onChange={e => setValue(questionNum, e.target.value)}
+            >
+                <option>--</option>
+                <option value={2}>{"😄"}</option>
+                <option value={1}>{"😐"}</option>
+                <option value={0}>{"🙁"}</option>
             </StyledEmojiSelect>
         );
     }
     function setValue(questionNum, val) {
-      // const { happiness } = props;
-      props.setQuestion()
+        // const { happiness } = props;
+        // props.setQuestion();
     }
 
     return (
@@ -30,7 +40,7 @@ function Question(props) {
             </div>
         </StyledRow>
     );
-};
+}
 
 export default Question;
 

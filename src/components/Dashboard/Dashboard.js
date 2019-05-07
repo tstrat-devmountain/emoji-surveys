@@ -1,19 +1,26 @@
 import React, { Component } from "react";
-import "./dashboard.scss";
+import axios from "axios";
 import Survey from "./Survey/Survey";
+import "./dashboard.scss";
+
 export default class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topics: [
-                "JS III",
-                "React V",
-                "HTML/CSS",
-                "Job Prep I",
-                "Skills Check IV"
-            ] // get from db
+            schedule: [],
+            topics: []
         };
     }
+
+    componentDidMount() {
+        axios.get("/api/schedule").then(schedule => {
+            this.setState({
+                schedule: schedule.data
+            });
+            this.setTopics(1);
+        });
+    }
+
     optionGenerator() {
         const weeks = 13; // weeks in cohort
         const options = [];
@@ -28,11 +35,11 @@ export default class Dashboard extends Component {
     }
 
     setTopics = week => {
-        // axios.get("....").then(res => {
-        //     this.setState({
-        //         topics: newTopics
-        //     });
-        // });
+        const { schedule } = this.state;
+        const currWeekTopics = schedule.filter(t => t.week === +week);
+        this.setState({
+            topics: currWeekTopics
+        });
     };
 
     render() {

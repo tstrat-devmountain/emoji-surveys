@@ -6,7 +6,7 @@ function Survey(props) {
     // Map over data
     // Should come from props
     const questions = props.topics.map((e, i) => (
-        <Question key={i} topic={e} />
+        <Question key={i} topic={e.topic} />
     ));
 
     return (
